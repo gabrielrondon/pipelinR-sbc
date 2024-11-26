@@ -1,0 +1,22 @@
+{
+    "canisters": {
+      "SmartBlockCanister": {
+        "type": "motoko",
+        "main": "src/SmartBlockCanister.mo",
+        "candid": "src/SmartBlockCanister.did"
+      }
+    },
+    "networks": {
+      "local": {
+        "bind": "127.0.0.1:8000",
+        "type": "ephemeral"
+      }
+    },
+    "defaults": {
+      "build": {
+        "packtool": ""
+      }
+    },
+    "version": 1
+  }
+  

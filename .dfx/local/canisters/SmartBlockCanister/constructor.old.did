@@ -1,0 +1,33 @@
+type TokenId = text;
+type SmartBlock = 
+ record {
+   content: text;
+   contributions: vec Contribution;
+   created_at: int;
+   funding_goal: nat;
+   id: BlockId;
+   owner: principal;
+   token_id: TokenId;
+   total_funded: nat;
+ };
+type Contribution = 
+ record {
+   amount: nat;
+   contributor: principal;
+   timestamp: int;
+ };
+type BlockId = nat;
+service : {
+  contribute: (TokenId, nat) -> (text);
+  createBlock: (text, nat) -> (TokenId);
+  getBlock: (TokenId) -> (opt SmartBlock) query;
+  getFundingStatus: (TokenId) ->
+   (opt
+     record {
+       contributions: vec Contribution;
+       funding_goal: nat;
+       total_funded: nat;
+     }) query;
+  getOwnedBlocks: (principal) -> (vec SmartBlock) query;
+  listBlocks: () -> (vec SmartBlock) query;
+}

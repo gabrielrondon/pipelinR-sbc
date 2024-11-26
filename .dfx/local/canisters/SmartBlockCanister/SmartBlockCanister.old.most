@@ -1,0 +1,20 @@
+// Version: 1.0.0
+type BlockId = Nat;
+type Contribution = {amount : Nat; contributor : Principal; timestamp : Int};
+type SmartBlock =
+  {
+    content : Text;
+    contributions : [Contribution];
+    created_at : Int;
+    funding_goal : Nat;
+    id : BlockId;
+    owner : Principal;
+    token_id : TokenId;
+    total_funded : Nat
+  };
+type TokenId = Text;
+actor {
+  stable var blocks_entries : [(BlockId, SmartBlock)];
+  stable var next_block_id : Nat;
+  stable var token_to_block : [(TokenId, BlockId)]
+};
